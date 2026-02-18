@@ -1,1 +1,37 @@
-<router-outlet>
+<!-- Navbar (Bootstrap CSS moved to index.html) -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+	<div class="container-fluid">
+		<a class="navbar-brand fw-bold" routerLink="/">EnquiryApp</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/submit-enquiry" routerLinkActive="active">Submit Enquiry</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/enquiry-list" routerLinkActive="active">Enquiry List</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+				</li>
+			</ul>
+
+			<div class="d-flex">
+				<a class="btn btn-outline-light me-2" routerLink="/signup">Sign Up</a>
+				<a class="btn btn-light" routerLink="/login">Login</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+<!-- Bootstrap JS bundle moved to index.html -->

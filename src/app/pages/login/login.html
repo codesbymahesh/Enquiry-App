@@ -1,1 +1,54 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+    <div class="login-card p-4 shadow-lg">
+
+      <h2 class="text-center mb-4">Login</h2>
+
+      <form>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input type="email" [(ngModel)]="loginObj.username" name="username" class="form-control" placeholder="Enter email">
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" [(ngModel)]="loginObj.pwd" name="pwd" class="form-control" placeholder="Enter password">
+        </div>
+
+        <!-- Remember me -->
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="remember">
+          <label class="form-check-label" for="remember">Remember me</label>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" (click)="onLogin()" class="btn btn-primary w-100 login-btn">
+          Sign In
+        </button>
+
+        <div class="text-center mt-3">
+          <small>Don't have an account? <a href="#">Register</a></small>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>

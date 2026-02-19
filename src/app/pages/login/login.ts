@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +15,16 @@ export class Login {
     username: "",
     pwd: ""
   }
-  router = inject(Router)
+  router = inject(Router);
+  authService = inject(AuthService);
 
   onLogin() {
     if (this.loginObj.username === 'admin' && this.loginObj.pwd === '223344') {
       alert('login successful');
-      localStorage.setItem('enuiryApp', 'adminLoggedIn')
-      this.router.navigateByUrl('/enquiry-list')
+      localStorage.setItem('enuiryApp', 'adminLoggedIn');
+      this.authService.setUsername(this.loginObj.username);
+      this.authService.setLoggedIn();
+      this.router.navigateByUrl('/enquiry-list');
     }
     else {
       alert('wrong credentials');

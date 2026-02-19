@@ -12,20 +12,31 @@
 				<li class="nav-item">
 					<a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" *ngIf="isLoggedIn$ | async">
 					<a class="nav-link" routerLink="/submit-enquiry" routerLinkActive="active">Submit Enquiry</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" *ngIf="isLoggedIn$ | async">
 					<a class="nav-link" routerLink="/enquiry-list" routerLinkActive="active">Enquiry List</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" *ngIf="isLoggedIn$ | async">
 					<a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
 				</li>
 			</ul>
 
-			<div class="d-flex">
-				<a class="btn btn-outline-light me-2" routerLink="/signup">Sign Up</a>
+			<!-- Not Logged In: Show Login & Sign Up -->
+			<div class="d-flex" *ngIf="!(isLoggedIn$ | async)">
+				<!-- <a class="btn btn-outline-light me-2" routerLink="/signup">Sign Up</a> -->
 				<a class="btn btn-light" routerLink="/login">Login</a>
+			</div>
+
+			<!-- Logged In: Show Welcome Message & Logout -->
+			<div class="d-flex align-items-center gap-3" *ngIf="isLoggedIn$ | async">
+				<span class="text-white fw-semibold">
+					<i class="bi bi-person-circle me-2"></i>Welcome, <strong>{{ username$ | async }}</strong>
+				</span>
+				<button class="btn btn-outline-light" (click)="logout()">
+					<i class="bi bi-box-arrow-right me-2"></i>Logout
+				</button>
 			</div>
 		</div>
 	</div>

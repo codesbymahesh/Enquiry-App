@@ -3,6 +3,7 @@ import { MasterService } from '../../services/master-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EnquiryModel } from '../../model/class/Enquiry.model';
+import { ICategory, IStatus } from '../../model/interface/master.model';
 
 @Component({
   selector: 'app-submit-enquiry',
@@ -13,8 +14,8 @@ import { EnquiryModel } from '../../model/class/Enquiry.model';
 export class SubmitEnquiry implements OnInit {
 
   masterService = inject(MasterService);
-  categoryList: any[] = [];
-  statusList: any[] = [];
+  categoryList: ICategory[] = [];
+  statusList: IStatus[] = [];
 
   newEnquiryObj: EnquiryModel = new EnquiryModel()
 

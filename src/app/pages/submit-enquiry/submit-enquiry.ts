@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MasterService } from '../../services/master-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EnquiryModel } from '../../model/class/Enquiry.model';
 
 @Component({
   selector: 'app-submit-enquiry',
@@ -15,20 +16,7 @@ export class SubmitEnquiry implements OnInit {
   categoryList: any[] = [];
   statusList: any[] = [];
 
-  newEnquiryObj: any = {
-  "enquiryId": 0,
-  "customerName": "",
-  "customerEmail": "",
-  "customerPhone": "",
-  "message": "",
-  "categoryId": 0,
-  "statusId": 0,
-  "enquiryType": "",
-  "isConverted": false,
-  "enquiryDate": new Date(),
-  "followUpDate": "",
-  "feedback": ""
-}
+  newEnquiryObj: EnquiryModel = new EnquiryModel()
 
 
   ngOnInit(): void {
@@ -55,6 +43,7 @@ export class SubmitEnquiry implements OnInit {
   }
 
   onSaveEnquiry(){
+    this.newEnquiryObj.statusId = '1';
     this.masterService.saveNewEnquiry(this.newEnquiryObj).subscribe({
       next:(result:any)=>{
         alert("Enquiry submitted successfully")

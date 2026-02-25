@@ -13,8 +13,8 @@
                         <i class="bi bi-person-fill"></i>
                         Customer Name <span class="required">*</span>
                     </label>
-                    <input type="text" [(ngModel)]="newEnquiryObj.customerName" class="form-control" id="customerName" name="customerName"
-                        placeholder="Enter your full name" required>
+                    <input type="text" [(ngModel)]="newEnquiryObj.customerName" class="form-control" id="customerName"
+                        name="customerName" placeholder="Enter your full name" required>
                     <div class="invalid-feedback">Please provide your name.</div>
                 </div>
 
@@ -26,8 +26,8 @@
                                 <i class="bi bi-envelope-fill"></i>
                                 Email Address <span class="required">*</span>
                             </label>
-                            <input type="email" [(ngModel)]="newEnquiryObj.customerEmail" class="form-control" id="customerEmail" name="customerEmail"
-                                placeholder="your@email.com" required>
+                            <input type="email" [(ngModel)]="newEnquiryObj.customerEmail" class="form-control"
+                                id="customerEmail" name="customerEmail" placeholder="your@email.com" required>
                             <div class="invalid-feedback">Please provide a valid email.</div>
                         </div>
                     </div>
@@ -37,8 +37,8 @@
                                 <i class="bi bi-telephone-fill"></i>
                                 Phone Number <span class="required">*</span>
                             </label>
-                            <input type="tel" [(ngModel)]="newEnquiryObj.customerPhone" class="form-control" id="customerPhone" name="customerPhone"
-                                placeholder="+1 (555) 123-4567" required>
+                            <input type="tel" [(ngModel)]="newEnquiryObj.customerPhone" class="form-control"
+                                id="customerPhone" name="customerPhone" placeholder="+1 (555) 123-4567" required>
                             <div class="invalid-feedback">Please provide your phone number.</div>
                         </div>
                     </div>
@@ -52,7 +52,8 @@
                                 <i class="bi bi-bookmark-fill"></i>
                                 Category <span class="required">*</span>
                             </label>
-                            <select [(ngModel)]="newEnquiryObj.categoryId" class="form-select" id="categoryId" name="categoryId" required>
+                            <select [(ngModel)]="newEnquiryObj.categoryId" class="form-select" id="categoryId"
+                                name="categoryId" required>
                                 <option value="" selected disabled>Select a category</option>
                                 <!-- @for (item of categoryList; track $index) {
                                     <option [value]="item.categoryId">{{item.categoryName}}</option>
@@ -64,13 +65,16 @@
                             <div class="invalid-feedback">Please select a category.</div>
                         </div>
                     </div>
+                    <!-- if there is new user then their enquiryId is 0 -->
+                    @if (newEnquiryObj.enquiryId !== 0) {
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="statusId" class="form-label">
                                 <i class="bi bi-flag-fill"></i>
                                 Priority Status <span class="required">*</span>
                             </label>
-                            <select [(ngModel)]="newEnquiryObj.statusId" class="form-select" id="statusId" name="statusId" required>
+                            <select [(ngModel)]="newEnquiryObj.statusId" class="form-select" id="statusId"
+                                name="statusId" required>
                                 <option value="" selected disabled>Select priority</option>
                                 <!-- @for (item of statusList; track $index) {
                                     <option [value]="item.statusId">{{item.statusName}}</option>
@@ -81,17 +85,21 @@
                             <div class="invalid-feedback">Please select a status.</div>
                         </div>
                     </div>
+                    }
+
                 </div>
 
+
                 <!-- Enquiry Date -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="enquiryDate" class="form-label">
                         <i class="bi bi-calendar-fill"></i>
                         Enquiry Date <span class="required">*</span>
                     </label>
-                    <input type="date" [(ngModel)]="newEnquiryObj.enquiryDate" class="form-control" id="enquiryDate" name="enquiryDate" required>
+                    <input type="date" [(ngModel)]="newEnquiryObj.enquiryDate" class="form-control" id="enquiryDate"
+                        name="enquiryDate" required>
                     <div class="invalid-feedback">Please provide an enquiry date.</div>
-                </div>
+                </div> -->
 
                 <!-- Enquiry Type -->
                 <div class="form-group">
@@ -99,7 +107,8 @@
                         <i class="bi bi-list-ul"></i>
                         Enquiry Type <span class="required">*</span>
                     </label>
-                    <input type="text" [(ngModel)]="newEnquiryObj.enquiryType" class="form-control" id="enquiryType" name="enquiryType"
+                    <input type="text" [(ngModel)]="newEnquiryObj.enquiryType" class="form-control" id="enquiryType"
+                        name="enquiryType"
                         placeholder="e.g., New Business, Existing Customer, Partner Inquiry, Media Inquiry" required>
                     <div class="invalid-feedback">Please provide an enquiry type.</div>
                 </div>
@@ -117,23 +126,24 @@
 
                 <!-- Follow-up Date -->
                 <div class="row">
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <div class="form-group">
                             <label for="followUpDate" class="form-label">
                                 <i class="bi bi-calendar-event"></i>
                                 Preferred Follow-up Date
                             </label>
-                            <input type="date" [(ngModel)]="newEnquiryObj.followUpDate" class="form-control" id="followUpDate" name="followUpDate">
+                            <input type="date" [(ngModel)]="newEnquiryObj.followUpDate" class="form-control"
+                                id="followUpDate" name="followUpDate">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="feedback" class="form-label">
                                 <i class="bi bi-star-fill"></i>
                                 Additional Feedback
                             </label>
-                            <input type="text" [(ngModel)]="newEnquiryObj.feedback" class="form-control" id="feedback" name="feedback"
-                                placeholder="Any additional comments">
+                            <input type="text" [(ngModel)]="newEnquiryObj.feedback" class="form-control" id="feedback"
+                                name="feedback" placeholder="Any additional comments">
                         </div>
                     </div>
                 </div>
@@ -141,7 +151,8 @@
                 <!-- Is Converted Checkbox -->
                 <div class="form-group">
                     <div class="form-check">
-                        <input [(ngModel)]="newEnquiryObj.isConverted" class="form-check-input" type="checkbox" id="isConverted" name="isConverted">
+                        <input [(ngModel)]="newEnquiryObj.isConverted" class="form-check-input" type="checkbox"
+                            id="isConverted" name="isConverted">
                         <label class="form-check-label" for="isConverted">
                             Mark as converted opportunity
                         </label>

@@ -1,1 +1,64 @@
-<p>enquiry-list works!</p>
+
+<div class="container-fluid py-5">
+  <div class="enquiry-grid">
+    <div *ngFor="let e of enquiries" class="enquiry-card">
+      <div class="card-top">
+        <div>
+          <span class="enquiry-id">#{{e.enquiryId}}</span>
+          <small class="ms-2 text-white-50">{{ e.enquiryDate | date: 'mediumDate' }}</small>
+        </div>
+        <span [ngClass]="{
+            'badge-converted': e.isConverted,
+            'badge-pending': !e.isConverted && e.statusId < 100,
+            'badge-urgent': !e.isConverted && e.statusId >= 100
+          }" class="status-badge">
+          <i *ngIf="e.isConverted" class="bi bi-check2-circle"></i>
+          <i *ngIf="!e.isConverted && e.statusId < 100" class="bi bi-clock"></i>
+          <i *ngIf="!e.isConverted && e.statusId >= 100" class="bi bi-exclamation-triangle-fill"></i>
+          <span class="ms-1">{{ e.isConverted ? 'Converted' : (e.statusId < 100 ? 'Pending' : 'Urgent') }}</span>
+        </span>
+      </div>
+
+      <div class="customer-section">
+        <div class="customer-avatar">{{ e.customerName.charAt(0) }}</div>
+        <div>
+          <h6 class="customer-name">{{ e.customerName }}</h6>
+          <p class="customer-email">{{ e.customerEmail }}</p>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label"><i class="bi bi-telephone-fill"></i> Phone:</span>
+        <span class="info-value">{{ e.customerPhone }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label"><i class="bi bi-tags-fill"></i> Category ID:</span>
+        <span class="info-value">{{ e.categoryId }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label"><i class="bi bi-briefcase-fill"></i> Type:</span>
+        <span class="info-value">{{ e.enquiryType }}</span>
+      </div>
+
+      <div class="message-box">{{ e.message }}</div>
+
+      <div class="info-row">
+        <span class="info-label"><i class="bi bi-calendar-event-fill"></i> Follow-up:</span>
+        <span class="info-value">{{ e.followUpDate | date:'mediumDate' }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-label"><i class="bi bi-chat-left-text-fill"></i> Feedback:</span>
+        <span class="info-value">{{ e.feedback }}</span>
+      </div>
+
+      <div class="card-actions">
+        <button class="btn-action view" title="View"><i class="bi bi-eye-fill"></i></button>
+        <button class="btn-action edit" title="Edit"><i class="bi bi-pencil-fill"></i></button>
+        <button class="btn-action delete" title="Delete"><i class="bi bi-trash-fill"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
